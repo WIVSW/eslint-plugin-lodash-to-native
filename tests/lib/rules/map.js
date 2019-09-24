@@ -17,12 +17,15 @@ var rule = require("../../../lib/rules/map"),
 // Tests
 //------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions: { ecmaVersion: 2015 }});
 ruleTester.run("map", rule, {
 
     valid: [
 
         // give me some code that won't trigger a warning
+        {
+            code: "var asdf = [].map(a => a);",
+        }
     ],
 
     invalid: [
