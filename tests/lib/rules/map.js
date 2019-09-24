@@ -48,6 +48,7 @@ ruleTester.run("map", rule, {
         },
         {
             code: '_.map(collection, (a) => a)',
+            output: 'collection instanceof Array ? collection.map((a) => a) : _.map(collection, (a) => a)',
             errors: [{
                 messageId: 'prefer'
             }]
