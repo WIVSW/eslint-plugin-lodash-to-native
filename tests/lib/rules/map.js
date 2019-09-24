@@ -24,13 +24,26 @@ ruleTester.run("map", rule, {
 
         // give me some code that won't trigger a warning
         {
-            code: "var asdf = [].map(a => a);",
+            code: 'var asdf = [].map(a => a);',
+        },
+        {
+            code: '_.map({a: 1, b: 2}, fn)',
         }
     ],
 
     invalid: [
         {
             code: "_.map([], (a) => a)",
+            errors: [{
+                message: "Fill me in.",
+                type: "Me too"
+            }]
+        },
+        {
+            code: `
+                var collection = [1,2,3];
+                _.map(collection, (a) => a)
+            `,
             errors: [{
                 message: "Fill me in.",
                 type: "Me too"
