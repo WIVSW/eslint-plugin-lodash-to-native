@@ -34,19 +34,22 @@ ruleTester.run("map", rule, {
     invalid: [
         {
             code: "_.map([], (a) => a)",
+            output: '[].map((a) => a)',
             errors: [{
-                message: "Fill me in.",
-                type: "Me too"
+                messageId: 'prefer'
             }]
         },
         {
-            code: `
-                var collection = [1,2,3];
-                _.map(collection, (a) => a)
-            `,
+            code: "_.map([ 1, 2, 3 ], (a) => a);",
+            output: '[ 1, 2, 3 ].map((a) => a);',
             errors: [{
-                message: "Fill me in.",
-                type: "Me too"
+                messageId: 'prefer'
+            }]
+        },
+        {
+            code: '_.map(collection, (a) => a)',
+            errors: [{
+                messageId: 'prefer'
             }]
         }
     ]
